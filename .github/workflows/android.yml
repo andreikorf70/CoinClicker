@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Распаковать игру
+      - name: Unzip game
         run: unzip -o CoinClicker-Android.zip -d game
 
       - uses: actions/setup-java@v4
@@ -22,7 +22,7 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-            - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@v3
         with:
           packages: 'platform-tools'
 
@@ -30,7 +30,7 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Собрать APK
+      - name: Build game
         working-directory: game
         run: gradle assembleDebug --no-daemon
 
